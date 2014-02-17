@@ -473,6 +473,11 @@ DEFAULT_MMAP_THRESHOLD       default: 256K
 #define HAVE_MORECORE 0
 #define HAVE_MMAP 1
 #endif  /* HAVE_MORECORE */
+#include <AvailabilityMacros.h>
+/* For OS X >= 10.7 malloc can't be used */
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1070
+#define FFI_MMAP_EXEC_WRIT 1
+#endif
 #endif  /* DARWIN */
 
 #ifndef LACKS_SYS_TYPES_H
